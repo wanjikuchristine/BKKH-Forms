@@ -1,0 +1,55 @@
+<htmlform formUuid="324f37a9-1b39-4a85-a8a3-26a09ef83f13" formName="CSF Investigations" formEncounterType="b7d7740b-5767-45b6-8ae3-332476e75abf" formVersion="1.0">
+    <style>
+        .background {
+            background-color: #888;
+        }
+        table.csf {
+            border-collapse: collapse;
+            background-color: #000;
+        }
+        table.csf > tbody > tr > td, table.csf > tbody > tr > th {
+            border: 0;
+            vertical-align: baseline;
+            padding: 2px;
+            text-align: left;
+            background-color: #F3F9FF;
+        }
+    </style>
+    <h2>CSF Evaluation</h2>
+    <div class="background">
+        <div style="display:none">
+            <td>Evaluation date:<encounterDate id="encounterDate" showTime="false" default="now" /></td>
+        </div>
+        <table class="csf">
+
+            <tbody>
+                <tr>
+                    <td>Location:<encounterLocation default="24" /></td>
+                    <td>Provider:<encounterProvider default="currentUser"/></td>
+                    <td>Date of test:<obs conceptId="163724AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" allowTime="false" /></td>
+                </tr>
+                <tr>
+                    <td>Appearance:<obs conceptId="159650AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" /></td>
+                    <td>Red Cells (10^6/uL)<obs conceptId="679AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" /></td>
+                    <td>White Cells (10^6/uL)<obs conceptId="678AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" /></td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <label><uimessage code="coreapps.consult.freeTextComments"/></label>
+                        <obs conceptId="162169AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="textarea" rows="5"/>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+
+    <ifMode mode="VIEW" include="false">
+        <div id="buttons">
+            <submit submitClass="confirm right" submitCode="general.save"/>
+            <button type="button" class="cancel"><uimessage code="general.cancel"/></button>
+        </div>
+    </ifMode>
+
+</htmlform>

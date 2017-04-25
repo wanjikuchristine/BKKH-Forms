@@ -1,0 +1,53 @@
+<htmlform formUuid="7f4f7ccb-8992-476e-a229-0c6d63e1eda5" formName="Other Investigation" formEncounterType="b7d7740b-5767-45b6-8ae3-332476e75abf" formVersion="1.0">
+    <style>
+        .background {
+            background-color: #888;
+        }
+        table.other {
+            border-collapse: collapse;
+            background-color: #000;
+        }
+        table.other > tbody > tr > td, table.other > tbody > tr > th {
+            border: 0;
+            vertical-align: baseline;
+            padding: 2px;
+            text-align: left;
+            background-color: #F3F9FF;
+        }
+    </style>
+    <h2>Other Evaluation</h2>
+    <div style="display:none">
+        <td>Evaluation date:<encounterDate id="encounterDate" showTime="false" default="now" /></td>
+    </div>
+    <div class="background">
+        <table class="other">
+            <tbody>
+                <tr>
+                    <td>Location:<encounterLocation default="24" /></td>
+                    <td>Provider:<encounterProvider default="currentUser"/></td>
+                    <td>Date of test:<obs conceptId="163724AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" allowTime="false" /></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Test Name:<obs conceptId="162087AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerClasses="Test" style="autocomplete" /></td>
+                    <td>Results:<obs conceptId="161577AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" /></td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <label><uimessage code="coreapps.consult.freeTextComments"/></label>
+                        <obs conceptId="162169AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="textarea" rows="5"/>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+
+    <ifMode mode="VIEW" include="false">
+        <div id="buttons">
+            <submit submitClass="confirm right" submitCode="general.save"/>
+            <button type="button" class="cancel"><uimessage code="general.cancel"/></button>
+        </div>
+    </ifMode>
+
+</htmlform>

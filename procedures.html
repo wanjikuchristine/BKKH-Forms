@@ -1,0 +1,221 @@
+<htmlform formUuid="d579417c-bdb4-4b2e-bf75-3620c7a2b27e" formName="Surgical Procedures" formEncounterType="f4be29e3-9713-4e3c-ad97-7136ce8768b6" formVersion="1.0">
+    <style>
+        .background {
+            background-color: #888;
+        }
+        table.procedures {
+            border-collapse: collapse;
+            background-color: #000;
+        }
+        table.procedures > tbody > tr > td, table.procedures > tbody > tr > th {
+            border: 0;
+            vertical-align: baseline;
+            padding: 2px;
+            text-align: left;
+            background-color: #F3F9FF;
+        }
+    </style>
+    <script type="text/javascript">
+        jq(function() {
+            jq("#noComplication *").prop('checked', 'checked'); //make the checkbox checked by default when the form loads
+            jq("#mainDiagnosis *").prop("disabled", true);  //disable the complication field because the check box is checked
+
+            jq("#noComplication").change(function () {
+
+                if(jq("#noComplication *").prop('checked') == true){
+                    jq("#mainDiagnosis *").val("");
+                    jq("#mainDiagnosis *").prop("disabled", true);
+                }
+                else {
+                    jq("#mainDiagnosis *").prop("disabled", false);
+                }
+
+            });
+            jq('input[type="checkbox"]').on('change', function() {
+                jq(this).siblings('input[type="checkbox"]').prop('checked', false);
+            });
+        });
+
+    </script>
+
+    <h2>Surgical Procedures</h2>
+    <div class="background" id="try">
+        <table class="procedures">
+            <tbody>
+            <tr>
+                <td>Date of Operation<encounterDate id="encounterDate" showTime="false" default="now" /></td>
+                <td>Clinical Location:<encounterLocation default="24" /></td>
+                <td>Surgeon Responsible for Chart:<encounterProvider default="currentUser" /></td>
+            </tr>
+            </tbody>
+        </table>
+        <table class="procedures">
+            <tbody>
+            <tr>
+                <td>
+                    Name of Operation:
+                    <obsgroup groupingConceptId="1938AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA">
+                        <obs conceptId="1651AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerClasses="Procedure" style="autocomplete" />
+                    </obsgroup>
+                </td>
+
+                <!--<td>
+                    Date of Operation:
+                    <obsgroup groupingConceptId="160714AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA">
+                        <obs conceptId="160715AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" defaultDatetime="now" allowTime="false" />
+                    </obsgroup>
+                </td>-->
+                <td colspan="2">
+                    OR1 Procedure:
+                    <obsgroup groupingConceptId="1938AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA">
+                        <obs conceptId="1651AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerClasses="Procedure" style="autocomplete" />
+                    </obsgroup>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    OR2 Procedure:
+                    <obsgroup groupingConceptId="1938AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA">
+                        <obs conceptId="1651AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerClasses="Procedure" style="autocomplete" />
+                    </obsgroup>
+                </td>
+                <td>OR3 Procedure:
+
+                    <obsgroup groupingConceptId="1938AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA">
+                        <obs conceptId="1651AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerClasses="Procedure" style="autocomplete" />
+                    </obsgroup>
+                </td>
+                <td>
+                    Speciality of Case:
+                    <obs conceptId="161630AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerConceptIds="160458AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,160472AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabels="Peds surgery,Peds NeuroSurgery" />
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <br />
+
+        <table class="procedures">
+            <tbody>
+            <tr>
+                <td>
+
+                    First BK Surgery:<br />
+                    <obs conceptId="e18fce98-ed6b-4327-a4be-eb4885cba6c4" answerConceptId="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Yes" style="checkbox" />
+                    <obs conceptId="e18fce98-ed6b-4327-a4be-eb4885cba6c4" answerConceptId="1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="No" style="checkbox" />
+                </td>
+                <td>Operating Surgeon Name:
+                    <obsgroup groupingConceptId="164919AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA">
+                        <obs conceptId="1473AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" size="10"/>
+                    </obsgroup>
+                </td>
+                <td>Role of Operating Surgeon:<obs conceptId="164226AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                                   answerConceptIds="164222AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,164223AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,164224AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,164225AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA," answerLabels="Attending Surgeon,Resident under supervision of attending surgeon,Resident under supervision of resident,Resident without supervision" /></td>
+            </tr>
+
+            <tr>
+                <obsgroup groupingConceptId="164919AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA">
+                    <td>What assistant?:<br />
+                        <obs conceptId="164524AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerConceptId="164522AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="First surgical assistant" style="checkbox" />
+                        <obs conceptId="164524AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerConceptId="164521AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="First surgical assistant" style="checkbox" />
+                    </td>
+                    <td>Assistant name:<obs conceptId="1473AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" /></td>
+                    <td>Role of assistant:<obs conceptId="164226AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" /></td>
+                </obsgroup>
+            </tr>
+            <br />
+            <tr>
+                <obsgroup groupingConceptId="164919AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA">
+                    <td colspan="3">Second Assistant Name:<obs conceptId="1473AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" /></td>
+                </obsgroup>
+            </tr>
+            <tr>
+                <td>Pre-Op Diagnosis:<obs conceptId="163034AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerClasses="Diagnosis" style="autocomplete" /></td>
+                <td>Post-Op Diagnosis:<obs conceptId="163035AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerClasses="Diagnosis" style="autocomplete" /></td>
+                <td></td>
+            </tr>
+            <tr>
+                <obsgroup groupingConceptId="164919AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA">
+                 <td>Attending Surgeon Name:<obs conceptId="1473AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" /></td>
+                </obsgroup>
+                <td>Quality of help(by attending):<obs conceptId="164232AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                                       answerConceptIds="164227AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,164228AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,164229AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,164230AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,164231AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                                       answerLabels="Level1(most),Level2(moderate),Level3(little),Level4(none or almost none),Operation by Attending" /></td>
+                <td>
+                    <span id="mainDiagnosis">
+                        Complication:<obs conceptId="6042AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerClasses="Diagnosis" style="autocomplete"  />
+                    </span>
+                    <br />
+                    <span id="noComplication">
+                        <obs conceptId="6042AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptId="1107AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="No complication" style="checkbox"  />
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">Surgical Complication Analysis:<obs conceptId="120198AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerConceptIds="164233AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,164234AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,164235AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,164236AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,164237AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,164238AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,164239AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                                        answerLabels="Due to Disease of Patient,Due to Known Complication (unpreventable),Due to Technical Error (preventable),Due to Technical Error (unpreventable),Due to Judgment Error,Due to Timing Error,Due to Device Failure"/></td>
+            </tr>
+            </tbody>
+        </table>
+        <br />
+        <table class="procedures">
+            <tbody>
+            <tr>
+                <td>Classification of Surgery:
+                    <obs conceptId="161921AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerConceptIds="161917AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,161918AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,161919AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,161920AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabels="Clean,Clean-Contaminated,Contaminated,Dirty"/>
+                </td>
+                <td></td>
+                <td>Urgency of surgery:<obs conceptId="163295AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                            answerConceptIds="1882AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1883AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,163294AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1067AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                            answerLabels="Emergency (status),Urgent (status),Elective (status),Unknown" /></td>
+            </tr>
+            <tr>
+                <td colspan="2">Operative Note:<obs conceptId="160632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="textarea" rows="5" /></td>
+                <td>
+                    Is Pathology sent?:<br />
+                    <obs conceptId="161933AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerConceptId="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Yes" style="checkbox" />
+                    <obs conceptId="161933AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerConceptId="1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="No" style="checkbox" />
+                </td>
+            </tr>
+            <tr>
+                <td>Estimated Blood loss (mls):<obs id="ebl" conceptId="161928AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" /></td>
+                <td>Drains:<obs conceptId="164240AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/></td>
+                <td>Total Fluid Intake:<obs conceptId="163036AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" /></td>
+            </tr>
+            <tr>
+                <td>Blood Product Volume:<obs conceptId="164241AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" /></td>
+                <td>Total urine output:<obs conceptId="161929AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" /></td>
+                <td>Weight:<obs conceptId="5089AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" /></td>
+            </tr>
+            <tr>
+                <td>*Inpatient?:<br />
+                    <obs conceptId="1896AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerConceptId="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Yes" style="checkbox" />
+                    <obs conceptId="1896AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerConceptId="1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="No" style="checkbox" />
+                </td>
+                <td>
+                    <obs conceptId="6042AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerConceptId="124193AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Traumatic case" style="checkbox" />
+                </td>
+                <td>Type of case:<obs conceptId="164254AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                      answerConceptIds="164242AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,161912AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,161909AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,164243AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,164244AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,164245AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,161914AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,164246AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,164247AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,164248AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,164249AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,164250AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,164251AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,164252AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,160326AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                      answerLabels="Local anesthetic sacral epidural block,Epidural anesthesia,General anesthesia,Inhalation (mask) general anesthesia,Intravenous sedation,Dissociative anesthesia,Local anesthesia,Local anesthetic ankle block,Local anesthetic intravenous regional block,Digital nerve block in hand,Local anesthetic digital nerve block in foot,Local anesthetic wrist block,Brachial plexus block by axillary approach,Brachial plexus block by supraclavicular approach,Spinal anesthesia" /></td>
+            </tr>
+            <tr>
+                <td>Anesthetist:<obs conceptId="1473AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" /></td>
+                <td>ASA clasification:<obs conceptId="164253AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                           answerConceptIds="160327AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,160328AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,160329AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,160330AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,160331AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,160332AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                           answerLabels="ASA Physical Class 1,ASA Physical Class 2,ASA Physical Class 3,ASA Physical Class 4,ASA Physical Class 5,ASA Physical Class 6"/> </td>
+                <td>Provder type:<br />
+                    <obs conceptId="163556AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerConceptIds="164255AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,164256AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,164257AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabels="Resident physician,Resident physician,Certified registered nurse anesthetist" />
+                </td>
+
+            </tr>
+            </tbody>
+        </table>
+        <br />
+    </div>
+    <submit submitClass="confirm right" submitCode="uicommons.saveForm"/>
+    <ifMode mode="VIEW" include="false">
+        <button class="cancel"><uimessage code="uicommons.cancelForm"/></button>
+    </ifMode>
+
+</htmlform>

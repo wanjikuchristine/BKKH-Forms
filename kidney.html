@@ -1,0 +1,83 @@
+<htmlform formUuid="2e160114-6c24-4933-bbf8-a8553e824cb9" formName="Kidney Investigation" formEncounterType="b7d7740b-5767-45b6-8ae3-332476e75abf" formVersion="1.0">
+    <style>
+        .background {
+            background-color: #888;
+        }
+        table.kidney {
+            border-collapse: collapse;
+            background-color: #000;
+        }
+        table.kidney > tbody > tr > td, table.kidney > tbody > tr > th {
+            border: 0;
+            vertical-align: baseline;
+            padding: 2px;
+            text-align: left;
+            background-color: #F3F9FF;
+        }
+    </style>
+    <h2>Kidney Evaluation</h2>
+    <div class="background">
+        <div style="display:none">
+            <td>Evaluation date:<encounterDate id="encounterDate" showTime="false" default="now" /></td>
+        </div>
+        <table class="kidney">
+            <tbody>
+                <tr>
+                    <td>Location:<encounterLocation default="24" /></td>
+                    <td>Provider:<encounterProvider default="currentUser"/></td>
+                    <td>Date of test:<obs conceptId="163724AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" allowTime="false" /></td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <table class="kidney">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <table class="kidney">
+                                            <tbody>
+                                            <obsgroup groupingConceptId="164322AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA">
+                                                <tr><td><obs conceptId="164330AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerConceptId="164328AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" answerLabel="Right"/></td></tr>
+                                                <tr><td>Measurement Left A (cm)<obs conceptId="163263" /></td></tr>
+                                                <tr><td>Measurement Left B (cm)<obs conceptId="163264" /></td></tr>
+                                                <tr><td>Hydronephrosis: <obs conceptId="164336AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                                                             answerConceptIds="164331AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,164332AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,164333AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,164334AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,164335AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabels="Grade 0,Grade 1(Minimal),Grade 2(Mild),Grade 3(Moderate),Grade 4(Severe)" /></td></tr>
+                                             </obsgroup>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table class="kidney">
+                                            <tbody>
+                                            <obsgroup groupingConceptId="164322AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA">
+                                                <tr><td><obs conceptId="164330AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerConceptId="164329AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="checkbox" answerLabel="Left"/></td></tr>
+                                                <tr><td>Measurement Left A (cm)<obs conceptId="163263" /></td></tr>
+                                                <tr><td>Measurement Left B (cm)<obs conceptId="163264" /></td></tr>
+                                                <tr><td>Hydronephrosis: <obs conceptId="164336AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                                                             answerConceptIds="164331AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,164332AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,164333AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,164334AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,164335AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabels="Grade 0,Grade 1(Minimal),Grade 2(Mild),Grade 3(Moderate),Grade 4(Severe)" /></td></tr>
+                                            </obsgroup>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <label><uimessage code="coreapps.consult.freeTextComments"/></label>
+                        <obs conceptId="162169AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="textarea" rows="5"/>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <ifMode mode="VIEW" include="false">
+        <div id="buttons">
+            <submit submitClass="confirm right" submitCode="general.save"/>
+            <button type="button" class="cancel"><uimessage code="general.cancel"/></button>
+        </div>
+    </ifMode>
+
+</htmlform>

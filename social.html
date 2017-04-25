@@ -1,0 +1,85 @@
+<htmlform formUuid="7d2a679c-bb5e-425d-b645-50ce46e29fbb" formName="Social Form" formEncounterType="3faf7df1-f57d-4661-b29e-58e2969d715f" formVersion="1.0">
+    <style>
+        .background {
+            background-color: #888;
+        }
+        table.social {
+            border-collapse: collapse;
+            background-color: #000;
+        }
+        table.social > tbody > tr > td, table.social > tbody > tr > th {
+            border: 0;
+            vertical-align: baseline;
+            padding: 2px;
+            text-align: left;
+            background-color: #F3F9FF;
+        }
+    </style>
+    <h2>Social Form</h2>
+    <div style="display:none">
+        <td>Evaluation date:<encounterDate id="encounterDate" showTime="false" default="now" /></td>
+    </div>
+    <div class="background">
+        <table class="social">
+            <tbody>
+                <tr>
+                    <td>Location:<encounterLocation default="24" /></td>
+                    <td>Provider:<encounterProvider default="currentUser"/></td>
+                </tr>
+            </tbody>
+        </table>
+        <br />
+        <table class="social">
+            <tbody>
+                <tr>
+                    <td>
+                        <table class="social">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        Detailed Address:<lookup expression="patient.personAddress.address1"/> <lookup expression="patient.personAddress.address2"/> <lookup expression="patient.personAddress.cityVillage"/>
+                                    </td>
+                                </tr>
+                                <tr><td>Primary Phone:<lookup expression="personAttributes.get('Telephone Number')" /></td></tr>
+                                <tr><td>Other Phone:<lookup expression="personAttributes.get('Other Phone Number')" /></td></tr>
+                                <tr><td colspan="2">Chief / Subchief:<lookup expression="personAttributes.get('Chief or Sub Chiefs Name')" /></td></tr>
+                            </tbody>
+                        </table>
+                    </td>
+                    <td>
+                        <table class="social">
+                            <tbody>
+                                <tr>
+                                    <td>Worker Name:<obs conceptId="160638" /></td>
+                                </tr>
+                                <tr>
+                                    <td>Worker Phone:<obs conceptId="159635" /></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">Funding Sponsor:<lookup expression="personAttributes.get('Funding Sponsor')" /></td>
+
+                                </tr>
+                            </tbody>
+
+                        </table>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="social">
+            <tbody>
+                <tr>
+                    <td colspan="3">
+                        Notes:<obs conceptId="CIEL:162169" style="textarea" rows="5"/>
+                    </td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <submit submitClass="confirm right" submitCode="uicommons.saveForm"/>
+    <ifMode mode="VIEW" include="false">
+        <button class="cancel"><uimessage code="uicommons.cancelForm"/></button>
+    </ifMode>
+</htmlform>

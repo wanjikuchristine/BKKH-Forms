@@ -1,0 +1,85 @@
+<htmlform formUuid="2f59d215-eed5-42e0-ba95-9797125b1d29" formName="Booking form" formEncounterType="b9490361-6c6a-446a-a6c7-ebcd766c075a" formVersion="1.0">
+    <style>
+        .background {
+            background-color: #888;
+        }
+        table.booking {
+            border-collapse: collapse;
+            background-color: #000;
+        }
+        table.booking > tbody > tr > td, table.booking > tbody > tr > th {
+            border: 0;
+            vertical-align: baseline;
+            padding: 2px;
+            text-align: left;
+            background-color: #F3F9FF;
+        }
+    </style>
+    <script type="text/javascript">
+        jq(function () {
+            jq('input[type="checkbox"]').on('change', function() {
+                jq(this).siblings('input[type="checkbox"]').prop('checked', false);
+            });
+        });
+
+    </script>
+
+    <h2>Procedure Bookings Form</h2>
+    <div style="display:none">
+        <td>Evaluation date:<encounterDate id="encounterDate" showTime="false" default="now" /></td>
+    </div>
+    <div class="background">
+        <br />
+        <table class="booking">
+            <tbody>
+                <tr>
+                    <td>Appointment Date:<obs conceptId="5096" allowFutureDates="true" /></td>
+                    <td>Site or Location:<encounterLocation default="24" /></td>
+                    <td>Provider:<encounterProvider default="currentUser" /> </td>
+                </tr>
+            </tbody>
+        </table>
+        <br />
+        <table class="booking">
+                <tbody>
+
+                        <repeat>
+
+                             <template>
+                                 <tr>
+                                <td>
+                                    Diagnosis: <obs conceptId="6042AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerClasses="Diagnosis" style="autocomplete" />
+                                </td>
+                                <td>
+                                    <obs conceptId="159946AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerConceptId="159943AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabels="Primary" style="checkbox" />
+                                    <obs conceptId="159946AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerConceptId="159944AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabels="Secondary" style="checkbox" />
+
+                                </td>
+                                 </tr>
+
+                            </template>
+                                <render n="1" concept="Diagnosis"/>
+                                <render n="2" concept="Diagnosis"/>
+                                <render n="3" concept="Diagnosis"/>
+
+                        </repeat>
+
+            </tbody>
+        </table>
+        <br />
+        <table class="booking">
+            <tbody>
+                <tr>
+                    <td colspan="2">Operation to be Performed:<obs conceptId="1651" answerClasses="Procedure" style="autocomplete" /></td>
+                    <td>Surgeon In-charge of Operation:<obs conceptId="164226AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" /></td>
+                </tr>
+
+            </tbody>
+        </table>
+      </div>
+
+    <submit submitClass="confirm right" submitCode="uicommons.saveForm"/>
+    <ifMode mode="VIEW" include="false">
+        <button class="cancel"><uimessage code="uicommons.cancelForm"/></button>
+    </ifMode>
+</htmlform>

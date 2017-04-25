@@ -1,0 +1,118 @@
+<htmlform formUuid="082b1c09-1237-4851-8862-4e8d0c2ecce0" formName="PedsSurg Visit" formEncounterType="93c4e5dc-42ff-4512-8046-4489c9866d74" formVersion="1.0">
+    <style>
+        .background {
+            background-color: #888;
+        }
+        table.paed {
+            border-collapse: collapse;
+            background-color: #000;
+        }
+        table.paed > tbody > tr > td, table.paed > tbody > tr > th {
+            border: 0;
+            vertical-align: baseline;
+            padding: 2px;
+            text-align: left;
+            background-color: #F3F9FF;
+        }
+    </style>
+    <script type="text/javascript">
+        jq(function () {
+            jq('input[type="checkbox"]').on('change', function() {
+                jq(this).siblings('input[type="checkbox"]').prop('checked', false);
+            });
+        });
+
+    </script>
+    <h2>PedsSurg Visit</h2>
+
+    <div class="background">
+        <table class="paed">
+            <tbody>
+            <tr>
+
+                <td>Date: <encounterDate id="encounterDate" showTime="false" default="now"/></td>
+                <td>Clinic Location: <encounterLocation default="24" /></td>
+                <td>Examiner: <encounterProvider default="currentUser"/></td>
+            </tr>
+            <tr>
+                <td>Visit Type:<br />
+                    <obs conceptId="164181AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerConceptIds="164180AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,160530AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabels="Initial,Follow Up" style="radio" answerSeparator="" required="true" />
+                </td>
+                <td>SSI:<obs conceptId="1729AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             answerConceptIds="1107AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,164218AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,164219AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,164220AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1067AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabels="None,Superficial,Deep Incisional,Organ space,Unknown" />
+                </td>
+                <td>Gestational Age at Birth:<obs conceptId="1409AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" /></td>
+            </tr>
+            </tbody>
+        </table>
+        <br />
+        <repeat>
+            <template>
+                <table class="paed">
+                    <tbody>
+                    <tr>
+                        <td>
+                            Diagnosis: <obs conceptId="6042AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerClasses="Diagnosis" style="autocomplete" />
+                        </td>
+                        <td>
+                            <obs conceptId="159946AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerConceptId="159943AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabels="Primary" style="checkbox" />
+                            <obs conceptId="159946AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerConceptId="159944AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabels="Secondary" style="checkbox" />
+
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </template>
+            <render n="1" concept="Diagnosis"/>
+            <render n="2" concept="Diagnosis"/>
+            <render n="3" concept="Diagnosis"/>
+        </repeat>
+        <table class="paed">
+            <tbody>
+            <tr>
+
+                <td colspan="3">
+                    Notes:<obs conceptId="162169AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="textarea" rows="5"/>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <br />
+        <table class="paed">
+            <tbody>
+            <tr>
+
+                <td>Health Status:<br />
+                    <obs conceptId="159640AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerConceptId="159405AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Overall well"  style="checkbox" />
+                    <obs conceptId="159640AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerConceptId="159407AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Not overall well" style="checkbox" />
+                </td>
+                <td>F/U PRN ONLY:<br />
+                    <obs conceptId="159488AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerConceptId="159490AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Yes" style="checkbox" />
+                    <obs conceptId="159488AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerConceptId="1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="No" style="checkbox" />
+                </td>
+                <td>Next Clinic Date: <obs conceptId="5096AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" allowFutureDates="true" /></td>
+            </tr>
+            <tr>
+
+                <td>Location of Next Clinic: <obs conceptId="1763AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="dropdown" /></td>
+                <td>Surgery OR needed?:<br />
+                    <obs conceptId="164258AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerConceptId="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Yes" style="checkbox" />
+                    <obs conceptId="164258AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerConceptId="1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="No" style="checkbox" />
+                </td>
+                <td>Date of Next Procedure<obs conceptId="160715AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" allowFutureDates="true" allowTime="false" /></td>
+            </tr>
+            <tr>
+
+                <td>Name of Surgeon <obs conceptId="1473AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" /></td>
+                <td colspan="2">Procedure next OR <obs conceptId="1651AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerClasses="Procedure" style="autocomplete" /></td>
+            </tr>
+            </tbody>
+        </table>
+        <br />
+    </div>
+
+    <submit submitClass="confirm right" submitCode="uicommons.saveForm"/>
+    <ifMode mode="VIEW" include="false">
+        <button class="cancel"><uimessage code="uicommons.cancelForm"/></button>
+    </ifMode>
+</htmlform>

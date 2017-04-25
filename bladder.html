@@ -1,0 +1,52 @@
+<htmlform formUuid="72b1fc63-9ffc-41d3-81ba-f805a192bf54" formName="Bladder Investigation" formEncounterType="b7d7740b-5767-45b6-8ae3-332476e75abf" formVersion="1.0">
+    <style>
+        .background {
+            background-color: #888;
+        }
+        table.bladder {
+            border-collapse: collapse;
+            background-color: #000;
+        }
+        table.bladder > tbody > tr > td, table.bladder > tbody > tr > th {
+            border: 0;
+            vertical-align: baseline;
+            padding: 2px;
+            text-align: left;
+            background-color: #F3F9FF;
+        }
+    </style>
+    <h2>Bladder Evaluation</h2>
+    <div class="background">
+        <div style="display:none">
+            <td>Evaluation date:<encounterDate id="encounterDate" showTime="false" default="now" /></td>
+        </div>
+        <table class="bladder">
+            <tbody>
+                <tr>
+                    <td>Location:<encounterLocation default="24" /></td>
+                    <td colspan="2">Provider:<encounterProvider default="currentUser"/></td>
+
+                </tr>
+                <tr>
+                    <td>LPP(cm): <obs conceptId="164321AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" /></td>
+                    <td>PVR (ml): <obs conceptId="163261AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" /></td>
+                    <td>Date of test:<obs conceptId="163724AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" allowTime="false" /></td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <label><uimessage code="coreapps.consult.freeTextComments"/></label>
+                        <obs conceptId="CIEL:162169" style="textarea" rows="5"/>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+        <ifMode mode="VIEW" include="false">
+            <div id="buttons">
+                <submit submitClass="confirm right" submitCode="general.save"/>
+                <button type="button" class="cancel"><uimessage code="general.cancel"/></button>
+            </div>
+        </ifMode>
+
+</htmlform>

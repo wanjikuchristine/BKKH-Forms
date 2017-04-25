@@ -1,0 +1,352 @@
+<htmlform formUuid="179ea08c-f66f-4b77-80a9-a5269a75ef49" formName="Neuro Visit" formEncounterType="4d0b20e6-9bb1-4504-bb76-24486387ca7f" formVersion="1.0">
+    <style>
+        .background {
+            background-color: #888;
+        }
+        table.neuro {
+            border-collapse: collapse;
+            background-color: #000;
+        }
+        table.neuro > tbody > tr > td, table.neuro > tbody > tr > th {
+            border: 0;
+            vertical-align: baseline;
+            padding: 2px;
+            text-align: left;
+            background-color: #F3F9FF;
+        }
+        div.inline {
+            display: inline;
+        }
+        table.neuroIneer {
+            border-collapse: collapse;
+            background-color: #000;
+        }
+        table.neuroIneer > tbody > tr > td, table.neuroIneer > tbody > tr > th {
+            border: 0;
+            vertical-align: baseline;
+            padding: 2px;
+            text-align: left;
+            background-color: #F3F9FF;
+        }
+    </style>
+    <script type="text/javascript">
+        jq(function () {
+
+            jq('input[type="checkbox"]').on('change', function() {
+                jq(this).siblings('input[type="checkbox"]').prop('checked', false);
+            });
+
+        });
+
+    </script>
+
+    <h2>Neuro Visit Form</h2>
+
+    <div class="background">
+        <br />
+        <table class="neuro">
+            <tbody>
+            <tr>
+                <td>Date:<encounterDate id="encounterDate" showTime="false" default="now" /></td>
+                <td>Location:<encounterLocation default="24" /></td>
+                <td>Examiner: <encounterProvider default="currentUser" /></td>
+            </tr>
+            <tr>
+                <td>
+                    Spinal Sensory Level:
+                    <obs conceptId="164189AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  />
+                </td>
+                <td><obs conceptId="160594AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerConceptId="5141AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Rt" style="checkbox" /></td>
+                <td><obs conceptId="160594AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerConceptId="5139AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Lt" style="checkbox" /></td>
+            </tr>
+            <tr>
+                <td colspan="3">Visit Type:<br />
+                    <obs conceptId="164181AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerConceptIds="164180AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,160530AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabels="Initial,Follow Up" style="radio" answerSeparator="" required="true" />
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <br />
+        <table class="neuro">
+            <tbody>
+            <repeat>
+                <template>
+                    <tr>
+                        <td>
+                            Diagnosis: <obs conceptId="6042AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerClasses="Diagnosis" style="autocomplete" />
+                        </td>
+                        <td>
+                            <obs conceptId="159946AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerConceptId="159943AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Primary" style="checkbox" />
+                            <obs conceptId="159946AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerConceptId="159944AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Secondary" style="checkbox" />
+
+                        </td>
+                    </tr>
+                </template>
+                <render n="1" concept="Diagnosis"/>
+                <render n="2" concept="Diagnosis"/>
+                <render n="3" concept="Diagnosis"/>
+            </repeat>
+            </tbody>
+        </table>
+        <br />
+        <table class="neuro">
+            <tbody>
+            <tr>
+                <obsgroup groupingConceptId="1727AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA">
+                    <td><obs conceptId="1728AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerConceptId="140238AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Fever" style="checkbox" /></td>
+                    <td><obs conceptId="1728AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerConceptId="206AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Seizure" style="checkbox" /></td>
+                    <td><obs conceptId="1728AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerConceptId="122983AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Vomiting" style="checkbox" /></td>
+                </obsgroup>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    Other Diagnoses:<obs conceptId="6042AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerClasses="Diagnosis" style="autocomplete" />
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <table class="neuro">
+            <tbody>
+            <tr>
+                <td colspan="2">Urine Continence status:<obs conceptId="163272AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                                 answerConceptIds="163270AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,163269AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,163271AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,111636AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1175AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1067AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabels="Normal,Continent with CIC,Continent with CIC and meds,Incontinent (urine),N/A,Unknown"/></td>
+                <td>CIC:<br />
+                    <obs conceptId="164192AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerConceptId="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Yes" style="checkbox" />
+                    <obs conceptId="164192AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerConceptId="1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="No"  style="checkbox" />
+                    <obs conceptId="164192AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerConceptId="1067AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Unknown" style="checkbox" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+
+                    CIC New:<br />
+                    <span>
+                        <obs conceptId="164193AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerConceptId="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Yes" style="checkbox" />
+                        <obs conceptId="164193AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerConceptId="1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="No" style="checkbox" />
+                        <obs conceptId="164193AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerConceptId="1067AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Unknown" style="checkbox" />
+                    </span>
+                    Bowel Management:<br />
+                    <span>
+                        <obs conceptId="164194AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerConceptId="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Yes" style="checkbox" />
+                        <obs conceptId="164194AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerConceptId="1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="No" style="checkbox" />
+                        <obs conceptId="164194AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerConceptId="1067AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Unknown" style="checkbox" />
+                    </span>
+
+                    Bmgmt Visit New:<br />
+                    <span>
+                        <obs conceptId="164195AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerConceptId="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Yes" style="checkbox" />
+                        <obs conceptId="164195AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerConceptId="1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="No" style="checkbox" />
+                        <obs conceptId="164195AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerConceptId="1067AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Unknown" style="checkbox" />
+                    </span>
+
+                </td>
+                <td colspan="2">
+                    <table class="neuroIneer">
+                        <tbody>
+                        <tr>
+                            <td>
+                                Currently taking medication:<br />
+                                <obsgroup groupingConceptId="160741AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA">
+                                    <obs conceptId="159367AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerConceptId="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Yes" style="checkbox" />
+                                    <obs conceptId="159367AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerConceptId="1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="No" style="checkbox" />
+                                </obsgroup>
+                            </td>
+                        </tr>
+                        <tr id="medication-history">
+                            <td>Medication History:<br />
+                                <repeat>
+                                    <template>
+                                        <obsgroup groupingConceptId="160741AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA">
+                                            <obs conceptId="1282AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerClasses="Drug" style="autocomplete" />
+                                        </obsgroup>
+                                    </template>
+                                    <render n="1" concept="Drug"/>
+                                    <render n="2" concept="Drug"/>
+                                    <render n="3" concept="Drug"/>
+                                </repeat>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td id="current-medication" colspan="3">Current medication:
+                    <table class="neuroIneer">
+                        <tbody>
+                        <tr>
+                            <th style="background-color: #888">Drug</th>
+                            <th style="background-color: #888; text-align: center">Dose</th>
+                            <th style="background-color: #888; text-align: center">Units</th>
+                            <th style="background-color: #888; text-align: center">Frequency</th>
+                            <th style="background-color: #888; text-align: center">Duration</th>
+                            <th style="background-color: #888; text-align: center">Duration units</th>
+                        </tr>
+                        <repeat>
+                            <template>
+                                <obsgroup groupingConceptId="1442AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA">
+                                    <tr>
+                                        <td><obs conceptId="1282AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerClasses="Drug" style="autocomplete" /></td>
+                                        <td><obs conceptId="1443AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" /></td>
+                                        <td><obs conceptId="1444AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" size="5" /></td>
+                                        <td>
+                                            <obs conceptId="160855AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                                 answerConceptIds="160862AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,160863AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,160864AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,160865AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,160858AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,160866AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,160870AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                                 answerLabels="Once daily,Once daily at bedtime,Once daily in the evening,Once daily in the morning,Twice daily,Thrice daily,Four times daily"
+                                            />
+                                        </td>
+                                        <td><obs conceptId="159368AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" /></td>
+                                        <td>
+                                            <obs conceptId="1732AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                                 answerConceptIds="1822AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1072AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1073AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1074AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                                 answerLabels="Hours,Days,Weeks,Months" />
+                                        </td>
+                                    </tr>
+                                </obsgroup>
+                            </template>
+                            <render n="1" concept="Drug"/>
+                            <render n="2" concept="Drug"/>
+                            <render n="3" concept="Drug"/>
+                        </repeat>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <br />
+        <table class="neuro">
+            <tbody>
+            <tr>
+                <td>
+                    Stool Pattern:<obs conceptId="162654AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                       answerConceptIds="1115AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,996AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,117208AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1175AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabels="Normal,Constipated,Incontinent(stool),NA" />
+                </td>
+                <td colspan="2">
+                    Maternal use of Folate during pregnancy: <br />
+                    <table class="neuro">
+                        <tbody>
+                        <tr>
+                            <td colspan="2">
+                                <obs conceptId="164196AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerConceptId="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Yes" style="checkbox" />
+                                <obs conceptId="164196AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerConceptId="1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="No" style="checkbox" />
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Development Review :<obs conceptId="1189AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                             answerConceptIds="162056AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,162061AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,162062AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,162063AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1175AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabels="Smiling,Sitting,Standing,Walking,N/A" />
+                </td>
+                <td>
+                    Braces :<obs conceptId="164201AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" />
+                </td>
+                <td>
+                    Devices:<obs conceptId="164204AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Speech:<obs conceptId="164209AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" />
+                </td>
+                <td>School:<obs conceptId="1712AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" /></td>
+                <td>HC(cm):<obs conceptId="5314AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" /></td>
+            </tr>
+            </tbody>
+        </table>
+        <br />
+        <table class="neuro">
+            <tbody>
+            <tr>
+                <td>
+                    Frontanelle:<obs conceptId="162505AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                     answerConceptIds="162507AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,162506AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1836AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1067AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabels="Sunken,Flat,Full,Unknown"/>
+                </td>
+                <td>
+                    Sight:<obs conceptId="164213AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                               answerConceptIds="147215AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,135566AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,163344AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,112710AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,163345AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1067AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabels="Blind,Decreased vision,Sunset,Squint,Normal vision,Unknown" />
+                </td>
+                <td>LE:<br />
+                <obs conceptId="164519AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                     answerConceptIds="159533AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,140077AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,130802AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,126247AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1067AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                     answerLabels="Normal strength,Flaccid Paraplegia,Paresis of Lower Extremity,Spastic Paraplegia,Unknown" />
+                </td>
+            </tr>
+            <tr>
+                <td>Shunt OK:<br />
+                    <obs conceptId="164214AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerConceptId="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Yes" style="checkbox" />
+                    <obs conceptId="164214AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerConceptId="1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="No" style="checkbox" />
+                </td>
+                <td>Surgical wound status:<obs conceptId="164215AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" /></td>
+                <td>Scoliosis:<br />
+                    <obs conceptId="6042AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerConceptId="113125AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Yes" style="checkbox" />
+                    <obs conceptId="6042AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerConceptId="162334AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="No" style="checkbox" />
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <br />
+        <table class="neuro">
+            <tbody>
+            <tr>
+                <td>
+                    Decubitus ulcers:<br />
+                    <obs conceptId="6042AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerConceptId="119656AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerLabel="Yes" style="checkbox" />
+                    <obs conceptId="6042AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerConceptId="162334AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  answerLabel="No" style="checkbox" />
+                </td>
+                <td>Decubitus Ulcer Location:<obs conceptId="164216AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                               answerConceptIds="129183AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,129184AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,129187AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,129188AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,142889AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,142890AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,155862AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1067AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabels="Lower Back,Heel,Buttock,Upper Back,Hip,Ankle,Sacrum,Unknown" />
+                </td>
+                <td>Other Signs: <obs conceptId="6042AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerClasses="Diagnosis" style="autocomplete"/></td>
+
+            </tr>
+            <tr>
+                <td>Date of Last Labs:
+                        <obs conceptId="160753AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
+                </td>
+                <td>Labs OK?:<obs conceptId="164217AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" /></td>
+                <td>Issues: <obs conceptId="160531AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" /></td>
+            </tr>
+            <tr>
+                <td>
+                    Health status:<br />
+                    <obs conceptId="159640AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerConceptId="159405AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Overall well" style="checkbox" />
+                    <obs conceptId="159640AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerConceptId="159407AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Not overall well" style="checkbox" />
+                </td>
+                <td>Next Clinic Date:<obs conceptId="5096AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" allowFutureDates="true"/></td>
+                <td>
+                    Place:<obs conceptId="1763AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" />
+                    SSI:<obs conceptId="1729AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                             answerConceptIds="1107AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,164218AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,164219AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,164220AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1067AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabels="None,Superficial,Deep Incisional,Organ space,Unknown" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Neuro OR Needed?:<br />
+                    <obs conceptId="164258AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerConceptId="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Yes" style="checkbox"/>
+                    <obs conceptId="164258AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerConceptId="1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="No" style="checkbox"/>
+                </td>
+                <td>Neuro OR Date:<obs conceptId="160753AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" allowFutureDates="true" /></td>
+                <td>Neuro OR Done?:<obs conceptId="9b66006e-8f03-43a8-bcd0-ab8d4e38557a" /></td>
+            </tr>
+            <tr>
+                <td>
+                    Physical exam:<obs conceptId="1391AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" />
+                </td>
+                <td></td>
+                <td></td>
+            </tr>
+            </tbody>
+        </table>
+        <br />
+    </div>
+
+    <submit submitClass="confirm right" submitCode="uicommons.saveForm"/>
+    <ifMode mode="VIEW" include="false">
+        <button class="cancel"><uimessage code="uicommons.cancelForm"/></button>
+    </ifMode>
+
+</htmlform>

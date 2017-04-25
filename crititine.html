@@ -1,0 +1,50 @@
+<htmlform formUuid="324f37a9-1b39-4a85-a8a3-26a09ef83f13" formName="Creatinine Investigations" formEncounterType="b7d7740b-5767-45b6-8ae3-332476e75abf" formVersion="1.0">
+ <style>
+        .background {
+            background-color: #888;
+        }
+        table.crit {
+            border-collapse: collapse;
+            background-color: #000;
+        }
+        table.crit > tbody > tr > td, table.crit > tbody > tr > th {
+            border: 0;
+            vertical-align: baseline;
+            padding: 2px;
+            text-align: left;
+            background-color: #F3F9FF;
+        }
+    </style>
+    <h2>Creatinine Evaluation</h2>
+    <div class="background">
+            <div style="display:none">
+                <td>Evaluation date:<encounterDate id="encounterDate" showTime="false" default="now" /></td>
+            </div>
+        <table class="crit">
+            <tbody>
+                <tr>
+                    <td>Location:<encounterLocation default="24" /></td>
+                    <td colspan="2">Provider:<encounterProvider default="currentUser"/></td>
+                </tr>
+                <tr>
+                    <td>Creatinine(umol/L):<obs conceptId="790AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" /></td>
+                    <td colspan="2">Date of test:<obs conceptId="163724AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" allowTime="false" /></td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <label><uimessage code="coreapps.consult.freeTextComments"/></label>
+                        <obs conceptId="162169AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" style="textarea" rows="5"/>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+     </div>
+
+    <ifMode mode="VIEW" include="false">
+        <div id="buttons">
+            <submit submitClass="confirm right" submitCode="general.save"/>
+            <button type="button" class="cancel"><uimessage code="general.cancel"/></button>
+        </div>
+    </ifMode>
+
+</htmlform>

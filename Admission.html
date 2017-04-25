@@ -1,0 +1,104 @@
+<htmlform formUuid="fc803dd8-aa3c-4de9-bd87-64ea7c947ae4" formName="Admissions" formEncounterType="d02513f0-8b7a-4040-9dbf-7a1eb62cc271" formVersion="1.0">
+    <style>
+        .background {
+        background-color: #888;
+        }
+        table.hospt {
+            border-collapse: collapse;
+            background-color: #000;
+        }
+        table.hospt > tbody > tr > td, table.hospt > tbody > tr > th {
+            border: 0;
+            vertical-align: baseline;
+            padding: 2px;
+            text-align: left;
+            background-color: #F3F9FF;
+        }
+    </style>
+    <script type="text/javascript">
+        jq(function () {
+            jq('input[type="checkbox"]').on('change', function() {
+                jq(this).siblings('input[type="checkbox"]').prop('checked', false);
+            });
+        });
+
+    </script>
+    <h2>Hospitalization Form for BKKH</h2>
+<div class="background">
+    <div>
+        <table class="hospt">
+            <tbody>
+                <tr>
+                    <td>Admission Date<encounterDate id="encounterDate" default="now" disallowMultipleEncountersOnDate="block"/></td>
+                    <td>Discharge Date<obs conceptId="1641" allowTime="false" defaultDatetime="now"/></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <table class="hospt">
+            <tbody>
+                <tr>
+                    <td>
+                        <uimessage code="coreapps.patientDashBoard.provider"/>
+                        <encounterProvider default="currentUser" required="true"  />
+                    </td>
+                    <td>
+                        <uimessage code="coreapps.patientDashBoard.location"/>
+                        <encounterLocation default="24"/>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <br />
+    <div>
+        <repeat>
+            <template>
+                <table class="hospt">
+                    <tbody>
+                        <tr>
+                            <td>
+                                Diagnosis: <obs conceptId="6042AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerClasses="Diagnosis" style="autocomplete" />
+                            </td>
+                            <td>
+                                <obs conceptId="159946AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerConceptId="159943AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabels="Primary" style="checkbox" />
+                                <obs conceptId="159946AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerConceptId="159944AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabels="Secondary" style="checkbox" />
+
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </template>
+            <render n="1" concept="Diagnosis"/>
+            <render n="2" concept="Diagnosis"/>
+            <render n="3" concept="Diagnosis"/>
+        </repeat>
+    </div>
+
+    <div>
+        <table class="hospt">
+            <tbody>
+                <tr>
+                    <td>
+                        <p>
+                            <label><uimessage code="coreapps.consult.freeTextComments"/></label>
+                            <obs conceptId="CIEL:162169" style="textarea" rows="5"/>
+                        </p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+</div>
+    <ifMode mode="VIEW" include="false">
+        <div id="buttons">
+            <submit submitClass="confirm right" submitCode="general.save"/>
+            <button type="button" class="cancel"><uimessage code="general.cancel"/></button>
+        </div>
+    </ifMode>
+
+</htmlform>
