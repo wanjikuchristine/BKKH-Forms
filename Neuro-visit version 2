@@ -117,32 +117,33 @@
                 </td>
             </tr>
             <tr>
-                <td>
 
-                    CIC New:<br />
+                <td>
+                   CIC New:<br />
                     <span>
                         <obs conceptId="164193AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerConceptId="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Yes" style="checkbox" />
                         <obs conceptId="164193AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerConceptId="1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="No" style="checkbox" />
                         <obs conceptId="164193AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerConceptId="1067AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Unknown" style="checkbox" />
                     </span>
-                    Bowel Management:<br />
+                  </td>
+
+                   <td>  Bowel Management:<br />
                     <span>
                         <obs conceptId="164194AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerConceptId="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Yes" style="checkbox" />
                         <obs conceptId="164194AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerConceptId="1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="No" style="checkbox" />
                         <obs conceptId="164194AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerConceptId="1067AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Unknown" style="checkbox" />
                     </span>
-
-                    BM mgmt Visit New:<br />
+                </td>
+                
+                <td>
+                   BM mgmt Visit New:<br />
                     <span>
                         <obs conceptId="164195AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerConceptId="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Yes" style="checkbox" />
                         <obs conceptId="164195AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerConceptId="1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="No" style="checkbox" />
                         <obs conceptId="164195AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerConceptId="1067AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Unknown" style="checkbox" />
-                    </span>
+                    </span>  
+                </td>
 
-                </td>
-                <td colspan="2">
-                   
-                </td>
             </tr>
             <tr>
              <tr> <table class="neuroIneer">
