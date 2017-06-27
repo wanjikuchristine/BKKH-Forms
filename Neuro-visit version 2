@@ -141,7 +141,11 @@
 
                 </td>
                 <td colspan="2">
-                    <table class="neuroIneer">
+                   
+                </td>
+            </tr>
+            <tr>
+             <tr> <table class="neuroIneer">
                         <tbody>
                         <tr>
                             <td>
@@ -153,10 +157,7 @@
                             </td>
                         </tr>
                                                 </tbody>
-                    </table>
-                </td>
-            </tr>
-            <tr>
+                    </table></tr>
                 <td id="current-medication" colspan="3">Current medication:
                     <table class="neuroIneer">
                         <tbody>
