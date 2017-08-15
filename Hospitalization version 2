@@ -1,0 +1,120 @@
+<htmlform formUuid="fc803dd8-aa3c-4de9-bd87-64ea7c947ae4" formName="Hospitalization" formEncounterType="d02513f0-8b7a-4040-9dbf-7a1eb62cc271" formVersion="1.0">
+    <style>
+        .background {
+            background-color: #888;
+        }
+        table.hospt {
+            border-collapse: collapse;
+            background-color: #000;
+        }
+        table.hospt > tbody > tr > td, table.hospt > tbody > tr > th {
+            border: 0;
+            vertical-align: baseline;
+            padding: 2px;
+            text-align: left;
+            background-color: #F3F9FF;
+        }
+    </style>
+    <script type="text/javascript">
+        jq(function () {
+            jq('input[type="checkbox"]').on('change', function() {
+                jq(this).siblings('input[type="checkbox"]').prop('checked', false);
+            });
+        });
+
+    </script>
+    <h2>Hospitalization Form for BKKH</h2>
+    <div class="background">
+        <div>
+            <table class="hospt">
+                <tbody>
+                <tr>
+                    <td>Admission Date<encounterDate id="encounterDate" disallowMultipleEncountersOnDate="block" /></td>
+                    <td>Discharge Date<obs conceptId="1641" allowTime="false" /></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <table class="hospt">
+                <tbody>
+                <tr>
+                    <td>
+                        <uimessage code="coreapps.patientDashBoard.location"/>
+                        <encounterLocation default="24"/>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <br />
+        <div>
+            <repeat>
+                <template>
+                    <table class="hospt">
+                        <tbody>
+                        <tr>
+                            <td>
+                                Diagnosis: <obs conceptId="6042AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerClasses="Diagnosis" style="autocomplete" />
+                            </td>
+                            <td>
+                                <obs conceptId="159946AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerConceptId="159943AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabels="Primary" style="checkbox" />
+                                <obs conceptId="159946AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerConceptId="159944AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabels="Secondary" style="checkbox" />
+
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </template>
+                <render n="1" concept="Diagnosis"/>
+                <render n="2" concept="Diagnosis"/>
+                <render n="3" concept="Diagnosis"/>
+            </repeat>
+        </div>
+
+        <div>
+            <table class="hospt">
+                <tbody>
+                <tr>
+                    <td>
+                        <p>
+                            <label><uimessage code="coreapps.consult.freeTextComments"/></label>
+                            <obs conceptId="CIEL:162169" style="textarea" rows="5"/>
+                        </p>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+    </div>
+    <ifMode mode="VIEW" include="false">
+        <div id="buttons">
+            <submit submitClass="confirm right" submitCode="general.save"/>
+            <button type="button" class="cancel"><uimessage code="general.cancel"/></button>
+        </div>
+    </ifMode>
+
+    <ifMode mode="EDIT" include="false">
+        <lookup complexExpression="
+            #set( $encounter = 0 )
+            #foreach ( $enc in $fn.allEncounters(null) )
+                  #if( $enc.encounterType.uuid == 'd02513f0-8b7a-4040-9dbf-7a1eb62cc271' )
+                      #if( $enc.visit.visitId == $visit.visitId )
+                          #set( $encounter = $enc)
+                      #end
+                   #end
+            #end
+            #if( $encounter != 0)
+                &lt;script type=&quot;text/javascript&quot;>
+                        if (window.location.href.indexOf('/module/htmlformentry/htmlForm.form') == -1 ||
+                            window.location.href.indexOf('/htmlformentryui/htmlform/enterHtmlFormWithStandardUi.page') == -1) {
+                            window.location.href = window.location.protocol + &quot;//&quot; + window.location.host + &quot;/&quot;+ OPENMRS_CONTEXT_PATH + &quot;/htmlformentryui/htmlform/editHtmlFormWithStandardUi.page?patientId=$encounter.patientId&amp;visitId=$visit.visitId&amp;formUuid=	fc803dd8-aa3c-4de9-bd87-64ea7c947ae4&amp;encounterId=$encounter.encounterId&amp;returnUrl=%2F&quot; + OPENMRS_CONTEXT_PATH + &quot;%2Fcoreapps%2Fclinicianfacing%2Fpatient.page%3FpatientId%3D$encounter.patientId&quot;;
+                        }
+                &lt;/script>
+            #end"/>
+    </ifMode>
+
+</htmlform>
